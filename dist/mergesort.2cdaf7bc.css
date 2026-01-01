@@ -1,0 +1,26 @@
+.bar {
+  background-color: #3b82f6;
+  border-radius: 6px 6px 0 0;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 0 2px;
+  transition: all .2s;
+  display: flex;
+}
+
+.bar.comparing {
+  background-color: #f59e0b !important;
+}
+
+.bar.swapping {
+  background-color: #ef4444 !important;
+}
+
+.bar.sorted {
+  background-color: #22c55e !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+/*# sourceMappingURL=mergesort.2cdaf7bc.css.map */

@@ -1,0 +1,23 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.hero-bg {
+  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+}
+
+.card-hover-effect {
+  border: 1px solid #0000;
+  transition: all .3s ease-in-out;
+}
+
+.card-hover-effect:hover {
+  border-color: #bfdbfe;
+  transform: translateY(-10px);
+  box-shadow: 0 20px 25px -5px #0000001a, 0 10px 10px -5px #0000000a;
+}
+
+.font-family {
+  font-family: Inter, sans-serif;
+}
+/*# sourceMappingURL=DSA-VIZ.2cdaf7bc.css.map */

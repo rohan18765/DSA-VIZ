@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BFS Visualization - DSA VIZ</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 flex flex-col h-screen">
+
+  <!-- HEADER -->
+  <header class="bg-white border-b shadow-sm">
+    <div class="container mx-auto px-4 md:px-6 py-3 flex justify-between items-center">
+      <a href="../index.html" class="flex items-center gap-2 group">
+        <div class="bg-slate-900 text-white p-1.5 rounded-lg group-hover:bg-slate-700 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          </svg>
+        </div>
+
+        <span class="text-lg font-semibold text-slate-700 group-hover:text-slate-900 transition">
+          Back
+        </span>
+      </a>
+
+      <h1 class="text-base md:text-xl font-bold text-slate-900">
+        Breadth-First Search (BFS)
+      </h1>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <!-- 💡 COLUMN ON MOBILE — ROW ON DESKTOP -->
+  <main class="flex-1 flex flex-col md:flex-row overflow-hidden">
+
+    <!-- CANVAS -->
+    <div
+      id="canvas-container"
+      onclick="handleCanvasClick(event)"
+      class="flex-1 bg-slate-100 relative overflow-hidden">
+
+      <div
+        id="instructions"
+        class="absolute top-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur px-4 py-2
+               rounded-full shadow text-xs md:text-sm text-slate-600">
+        Click anywhere to add nodes. Click two nodes to connect them.
+      </div>
+
+      <svg id="edge-svg" class="absolute inset-0 w-full h-full pointer-events-none"></svg>
+      <div id="node-layer" class="absolute inset-0 pointer-events-none"></div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <!-- 💡 FULL WIDTH ON MOBILE — FIXED WIDTH ON DESKTOP -->
+    <aside
+      class="w-full md:w-[28rem] lg:w-[32rem] xl:w-[36rem]
+             bg-white border-t md:border-t-0 md:border-l flex flex-col">
+
+      <div class="p-4 md:p-6 space-y-6 border-b">
+
+        <!-- Traversal -->
+        <section>
+          <h3 class="text-xs font-bold uppercase text-slate-700 mb-2">Traversal Path</h3>
+
+          <div id="traversal-output"
+            class="w-full p-3 bg-slate-50 border rounded-lg min-h-[48px]
+                   flex flex-wrap gap-1 text-sm font-mono">
+            <span class="text-slate-500 italic">Ready…</span>
+          </div>
+        </section>
+
+        <!-- Queue -->
+        <section>
+          <h3 class="text-xs font-bold uppercase text-slate-700 mb-2">Queue Monitor</h3>
+
+          <div class="flex justify-between text-[10px] text-slate-600 font-semibold mb-1 px-1">
+            <span>← Front</span>
+            <span>Rear ←</span>
+          </div>
+
+          <div
+            id="queue-display"
+            class="w-full h-16 bg-slate-50 border rounded-lg flex items-center px-4 gap-2 overflow-x-auto">
+            <span class="text-xs text-slate-400 italic mx-auto">Queue Empty</span>
+          </div>
+        </section>
+
+        <!-- Builder -->
+        <section class="pt-2 border-t">
+          <h3 class="text-xs font-bold uppercase text-slate-500 mb-3">
+            Builder Tools
+          </h3>
+
+          <div class="flex gap-2">
+            <button onclick="setMode('node')" id="btn-node"
+              class="flex-1 bg-slate-900 text-white py-2 rounded-lg text-sm font-medium shadow">
+              + Add Node
+            </button>
+
+            <button onclick="setMode('edge')" id="btn-edge"
+              class="flex-1 bg-slate-900 text-white py-2 rounded-lg text-sm font-medium">
+              Connect Edge
+            </button>
+          </div>
+
+          <h3 class="text-xs font-bold uppercase text-slate-500 mt-5 mb-2">
+            Algorithm
+          </h3>
+
+          <div class="flex gap-2 flex-wrap">
+            <input
+              id="start-node"
+              type="number"
+              placeholder="Start ID"
+              class="w-28 px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-slate-900 outline-none">
+
+            <button onclick="startBFS()"
+              class="flex-1 bg-indigo-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition">
+              Run BFS
+            </button>
+          </div>
+
+          <button onclick="clearGraph()"
+            class="w-full mt-5 text-base text-red-500 hover:text-red-700 underline">
+            Clear Graph
+          </button>
+        </section>
+
+      </div>
+
+      <!-- Log -->
+      <div class="flex-1 p-4 md:p-6 bg-slate-50 overflow-y-auto">
+        <h3 class="text-xs font-bold uppercase text-slate-500 mb-3">
+          Event Log
+        </h3>
+
+        <div id="log-container" class="space-y-2 text-sm font-mono">
+          <div class="p-2 bg-white border rounded">
+            Graph ready.
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <script src="../algorithms/graphs/bfs.js"></script>
+</body>
+</html>

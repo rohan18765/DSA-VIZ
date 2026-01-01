@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stack Visualization - DSA VIZ</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../assets/style.css">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+
+</head>
+
+<body class="bg-gray-50 text-gray-800 flex flex-col h-screen">
+
+  <!-- HEADER -->
+  <header class="bg-white/90 backdrop-blur border-b border-gray-200 shadow-sm z-20">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="../index.html" class="flex items-center gap-2 group">
+        <div class="bg-violet-600 text-white p-1.5 rounded-lg group-hover:bg-violet-700 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+        </div>
+
+        <span class="text-lg font-bold text-gray-800 group-hover:text-violet-700 transition">
+          Back to Home
+        </span>
+      </a>
+
+      <h1 class="text-xl font-bold text-violet-700">
+        Stack (LIFO) Visualizer
+      </h1>
+    </div>
+  </header>
+
+  <main class="flex-1 flex overflow-hidden">
+
+    <!-- BOARD -->
+    <div
+      class="flex-1 relative flex items-center justify-center p-10
+             bg-[radial-gradient(circle,rgba(255,255,255,1)0%,rgba(245,243,255,1)100%)]
+             border-r border-gray-200"
+    >
+      <div class="relative">
+        <!-- STACK CONTAINER -->
+        <div
+          id="stack-container"
+          class="w-44 h-[520px] border-b-[10px] border-l-[10px] border-r-[10px]
+                 border-violet-300 rounded-b-2xl bg-white/60
+                 flex flex-col-reverse items-center justify-start p-2
+                 shadow-inner relative z-10"
+        ></div>
+
+        <!-- TOP POINTER -->
+        <div
+          id="top-pointer"
+          class="absolute left-full ml-5 top-[500px] flex items-center gap-2
+                 transition-all duration-300 opacity-0 z-20 w-32"
+        >
+          <span class="text-2xl text-violet-600">←</span>
+          <span class="bg-violet-600 text-white px-2 py-1 rounded text-sm font-bold shadow-sm">
+            TOP
+          </span>
+        </div>
+
+        <!-- SHADOW -->
+        <div class="absolute -bottom-4 -left-10 -right-10 h-4 bg-gray-300 rounded-full blur-sm -z-10"></div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside
+      class="w-[30rem] bg-white shadow-2xl border-l border-gray-100 flex flex-col z-20 rounded-l-2xl"
+    >
+      <div class="p-6 border-b border-gray-100 space-y-6">
+
+        <!-- STATUS -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-violet-50 p-3 rounded-lg border border-violet-100 text-center">
+            <span class="block text-xs font-semibold text-violet-500 uppercase">
+              Top Element
+            </span>
+            <span id="top-value" class="text-2xl font-bold text-violet-700">-</span>
+          </div>
+
+          <div class="bg-gray-50 p-3 rounded-lg border border-gray-200 text-center">
+            <span class="block text-xs font-semibold text-gray-500 uppercase">
+              Stack Size
+            </span>
+            <span id="stack-size" class="text-2xl font-bold text-gray-700">0</span>
+          </div>
+        </div>
+
+        <!-- OPERATIONS -->
+        <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 space-y-3">
+          <label class="block text-xs font-semibold text-gray-500 uppercase">
+            Operations
+          </label>
+
+          <input
+            type="number"
+            id="stack-input"
+            placeholder="Enter value"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg
+                   focus:ring-2 focus:ring-violet-500 text-sm outline-none"
+          />
+
+          <button
+            onclick="push()"
+            class="w-full bg-violet-600 text-white px-3 py-2.5 rounded-lg text-sm font-medium
+                   hover:bg-violet-700 active:scale-95 transition flex items-center justify-center gap-2"
+          >
+            Push
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </button>
+
+          <div class="grid grid-cols-2 gap-2">
+            <button
+              onclick="pop()"
+              class="bg-rose-50 text-rose-600 border border-rose-200 px-3 py-2 rounded-lg
+                     text-sm hover:bg-rose-100 active:scale-95 flex items-center justify-center gap-2"
+            >
+              Pop
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+              </svg>
+            </button>
+
+            <button
+              onclick="peek()"
+              class="bg-violet-50 text-violet-700 border border-violet-200 px-3 py-2 rounded-lg
+                     text-sm hover:bg-violet-100 active:scale-95"
+            >
+              Peek
+            </button>
+          </div>
+
+          <button
+            onclick="clearStack()"
+            class="w-full mt-2 text-xs text-gray-400 hover:text-gray-600 underline"
+          >
+            Reset Stack
+          </button>
+        </div>
+
+        <!-- SPEED -->
+        <div>
+          <div class="flex justify-between mb-1">
+            <label class="text-xs font-semibold text-gray-500 uppercase">
+              Animation Speed
+            </label>
+            <span class="text-xs text-gray-500">1x</span>
+          </div>
+
+          <input
+            type="range"
+            min="1"
+            max="5"
+            value="3"
+            class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-violet-600"
+          />
+        </div>
+      </div>
+
+      <!-- LOG -->
+      <div class="flex-1 p-6 bg-gray-50 overflow-y-auto">
+        <label class="block text-xs font-semibold text-gray-500 uppercase mb-3">
+          Execution Log
+        </label>
+
+        <div
+          id="log-container"
+          class="space-y-2 text-sm font-mono bg-white p-3 rounded-xl border border-gray-200 shadow-sm"
+        >
+          <div class="p-2 border-l-4 border-violet-500 bg-violet-50 rounded">
+            Stack initialized…
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script src="../datastructure/stack.js"></script>
+</body>
+</html>

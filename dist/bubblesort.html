@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort Visualizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="stylesheet" href="/DSA-VIZ.2cdaf7bc.css">
+</head>
+<body class="min-h-screen p-4 md:p-8 text-slate-800">
+
+    <div class="max-w-7xl mx-auto">
+        <header class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-bold text-slate-900 flex items-center gap-3">
+                    <i data-lucide="bar-chart-2" class="w-8 h-8 text-blue-600"></i>
+                    Bubble Sort Visualizer
+                </h1>
+                <p class="text-slate-500 mt-2">Visualize, analyze, and learn the algorithm.</p>
+            </div>
+            <a href="/index.html" class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium px-4 py-2 bg-blue-50 rounded-lg hover:bg-blue-100 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home
+            </a>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-7 flex flex-col gap-6">
+                <div class="bg-white p-2 rounded-2xl shadow-sm border border-slate-200">
+                    <div id="visualization-container" class="border border-slate-100"></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                    <div class="mb-6">
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Custom Input Array</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="array-input" class="flex-1 px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-700 font-mono text-sm" placeholder="e.g. 25, 10, 45, 5" value="29, 10, 14, 37, 13, 5, 25, 45">
+                            <button id="update-btn" class="px-4 py-2 bg-emerald-100 text-emerald-700 font-semibold rounded-lg hover:bg-emerald-200 transition flex items-center gap-2">
+                                <i data-lucide="refresh-cw" class="w-4 h-4"></i> Update
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div class="w-full md:w-1/2">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Animation Speed</span>
+                                <span class="text-xs font-medium text-slate-400">1x - 5x</span>
+                            </div>
+                            <input type="range" id="speed-slider" min="1" max="1000" value="500" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                        </div>
+                        
+                        <div class="flex gap-3 w-full md:w-auto">
+                            <button id="start-btn" class="flex-1 px-6 py-2.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 shadow-lg shadow-blue-200 transition flex items-center justify-center gap-2">
+                                <i data-lucide="play" class="w-4 h-4"></i> Start Sort
+                            </button>
+                            <button id="reset-btn" class="px-6 py-2.5 bg-slate-100 text-slate-600 font-semibold rounded-lg hover:bg-slate-200 transition flex items-center gap-2">
+                                <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Reset
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-100 p-5 rounded-xl flex gap-4 items-start">
+                    <div class="p-2 bg-blue-100 rounded-lg text-blue-600 shrink-0">
+                        <i data-lucide="info" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-blue-900 text-sm uppercase tracking-wide mb-1">Status</h4>
+                        <p id="explanation-text" class="text-blue-800 font-medium">Ready to start visualization.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 flex flex-col gap-6">
+                <div class="bg-slate-900 rounded-xl overflow-hidden shadow-lg border border-slate-800">
+                    <div class="bg-slate-800 px-4 py-2 border-b border-slate-700 flex justify-between items-center">
+                        <span class="text-slate-300 text-xs font-bold uppercase tracking-wider">JavaScript Implementation</span>
+                        <div class="flex gap-1.5">
+                            <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                        </div>
+                    </div>
+                    <div class="p-4 overflow-x-auto code-block">
+                        <pre class="text-sm font-mono leading-relaxed text-blue-100"><code><span class="text-purple-400">async function</span> <span class="text-yellow-300">bubbleSort</span>(arr) { ... }</code></pre>
+                    </div>
+                </div>
+
+                </div>
+        </div>
+    </div>
+
+    <script type="module" src="/bubblesort.6612167e.js"></script>
+
+</body></html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BST Visualization - DSA VIZ</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+
+</head>
+
+<body class="bg-gray-50 text-gray-800 flex flex-col h-screen">
+
+  <!-- HEADER -->
+  <header class="bg-white/90 backdrop-blur border-b border-gray-200 shadow-sm z-20">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="../index.html" class="flex items-center gap-2 group">
+        <div class="bg-lime-600 text-white p-1.5 rounded-lg group-hover:bg-lime-700 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+        </div>
+
+        <span class="text-lg font-bold text-gray-800 group-hover:text-lime-700 transition">
+          Back to Home
+        </span>
+      </a>
+
+      <h1 class="text-xl font-bold text-lime-700">
+        Binary Search Tree Visualizer
+      </h1>
+    </div>
+  </header>
+
+  <main class="flex-1 flex overflow-hidden">
+
+    <!-- VISUALIZER BOARD -->
+    <div
+      id="canvas-container"
+      class="flex-1 relative overflow-auto flex items-center justify-center
+             bg-[radial-gradient(circle,rgba(255,255,255,1)0%,rgba(240,253,244,1)100%)]
+             border-r border-gray-200"
+    >
+      <svg id="tree-svg" class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none"></svg>
+
+      <div id="tree-container" class="absolute top-0 left-0 w-full h-full z-10">
+        <p
+          id="empty-msg"
+          class="text-gray-400 text-lg absolute top-1/2 left-1/2
+                 transform -translate-x-1/2 -translate-y-1/2"
+        >
+          Tree is empty. Insert a root node!
+        </p>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside
+      class="w-[30rem] bg-white shadow-2xl border-l border-gray-100 flex flex-col z-20 rounded-l-2xl"
+    >
+      <div class="p-6 border-b border-gray-100 space-y-6">
+
+        <!-- OPERATIONS CARD -->
+        <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 space-y-3">
+          <label class="block text-xs font-semibold text-gray-500 uppercase">
+            Operations
+          </label>
+
+          <input
+            type="number"
+            id="node-value"
+            placeholder="Enter number"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg
+                   focus:ring-2 focus:ring-lime-500 outline-none text-sm"
+          />
+
+          <div class="grid grid-cols-2 gap-2">
+            <button
+              onclick="insertNode()"
+              class="bg-lime-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-lime-700 active:scale-95 transition"
+            >
+              Insert
+            </button>
+
+            <button
+              onclick="searchNode()"
+              class="bg-white border border-gray-300 px-3 py-2 rounded-lg text-sm hover:bg-gray-50 active:scale-95"
+            >
+              Search
+            </button>
+          </div>
+
+          <button
+            onclick="clearTree()"
+            class="w-full mt-2 text-xs text-rose-500 hover:text-rose-700 underline"
+          >
+            Clear Tree
+          </button>
+        </div>
+
+        <!-- TRAVERSALS -->
+        <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 space-y-3">
+          <label class="block text-xs font-semibold text-gray-500 uppercase">
+            Traversals
+          </label>
+
+          <div class="grid grid-cols-3 gap-2">
+            <button onclick="traverse('inorder')"
+                    class="bg-lime-50 text-lime-700 border border-lime-200 text-xs py-2 rounded hover:bg-lime-100">
+              In-Order
+            </button>
+
+            <button onclick="traverse('preorder')"
+                    class="bg-lime-50 text-lime-700 border border-lime-200 text-xs py-2 rounded hover:bg-lime-100">
+              Pre-Order
+            </button>
+
+            <button onclick="traverse('postorder')"
+                    class="bg-lime-50 text-lime-700 border border-lime-200 text-xs py-2 rounded hover:bg-lime-100">
+              Post-Order
+            </button>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-gray-500 uppercase mb-2">
+              Traversal Output
+            </label>
+
+            <div
+              id="traversal-result"
+              class="w-full p-3 bg-white border border-gray-200 rounded-lg
+                     min-h-[50px] text-sm font-mono text-gray-700 break-words shadow-sm"
+            >
+              <span class="text-gray-400 italic">
+                No traversal yet...
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SPEED -->
+        <div>
+          <div class="flex justify-between mb-1">
+            <label class="text-xs font-semibold text-gray-500 uppercase">
+              Animation Speed
+            </label>
+            <span class="text-xs text-gray-500">1x</span>
+          </div>
+
+          <input
+            type="range"
+            min="1"
+            max="5"
+            value="3"
+            class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-lime-600"
+          />
+        </div>
+      </div>
+
+      <!-- LOGS -->
+      <div class="flex-1 p-6 bg-gray-50 overflow-y-auto">
+        <label class="block text-xs font-semibold text-gray-500 uppercase mb-3">
+          Execution Log
+        </label>
+
+        <div
+          id="log-container"
+          class="space-y-2 text-sm font-mono bg-white p-3 rounded-xl border border-gray-200 shadow-sm"
+        >
+          <div class="p-2 border-l-4 border-lime-500 bg-lime-50 rounded">
+            Tree ready…
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script src="../datastructure/bst.js"></script>
+</body>
+</html>

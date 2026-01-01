@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ===== Meta ===== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort Visualizer</title>
+
+    <!-- ===== Styles & Libraries ===== -->
+    <link rel="stylesheet" href="../assets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="min-h-screen bg-slate-50 text-slate-800  visualizer-bars">
+
+<div class="max-w-[1400px] mx-auto w-full p-4 md:p-8 flex-grow">
+
+    <!-- ================================================= -->
+    <!-- Header -->
+    <!-- ================================================= -->
+    <header class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+
+        <a href="../index.html"
+           class="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-lg
+                  hover:bg-blue-100 hover:text-blue-800 transition font-medium">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            Back to Home
+        </a>
+        <div>
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 flex items-center gap-3">
+                <i data-lucide="bar-chart-2" class="w-8 h-8 text-blue-600"></i>
+                Bubble Sort Visualizer
+            </h1>
+            <p class="text-slate-500 mt-2">
+                Visualize, analyze, and learn the algorithm.
+            </p>
+        </div>
+
+
+    </header>
+
+    <!-- ================================================= -->
+    <!-- Main Layout -->
+    <!-- ================================================= -->
+    <main class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+        <!-- ================= Left Panel ================= -->
+        <section class="lg:col-span-7 flex flex-col gap-6">
+
+            <!-- Visualization -->
+            <div class="bg-white p-2 rounded-2xl shadow-sm border border-slate-200">
+                <div id="visualization-container" class="border border-slate-100"></div>
+            </div>
+
+            <!-- Controls -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+
+                <!-- Array Input -->
+                <div class="mb-6">
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">
+                        Custom Input Array
+                    </label>
+                    <div class="flex gap-2">
+                        <input
+                            type="text"
+                            id="array-input"
+                            value="29, 10, 14, 37, 13, 5, 25, 45"
+                            class="flex-1 px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg
+                                   focus:ring-2 focus:ring-blue-500 outline-none
+                                   font-mono text-sm text-slate-700"
+                        />
+                        <button id="update-btn"
+                                class="flex items-center gap-2 px-4 py-2 rounded-lg
+                                       bg-emerald-100 text-emerald-700 font-semibold
+                                       hover:bg-emerald-200 transition">
+                            <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                            Update
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Speed & Actions -->
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+
+                    <!-- Speed Slider -->
+                    <div class="w-full md:w-1/2">
+                        <input type="range"
+                               id="speed-slider"
+                               min="1"
+                               max="1000"
+                               value="500"
+                               class="w-full h-2 bg-slate-200 rounded-lg cursor-pointer accent-blue-600">
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="flex gap-3">
+                        <button id="start-btn"
+                                class="flex items-center gap-2 px-6 py-2.5 rounded-lg
+                                       bg-blue-600 text-white font-semibold
+                                       hover:bg-blue-700 transition">
+                            <i data-lucide="play" class="w-4 h-4"></i>
+                            Start
+                        </button>
+
+                        <button id="reset-btn"
+                                class="flex items-center gap-2 px-6 py-2.5 rounded-lg
+                                       bg-slate-100 text-slate-600 font-semibold
+                                       hover:bg-slate-200 transition">
+                            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Box -->
+            <div class="flex gap-4 items-start bg-blue-50 border border-blue-100 p-5 rounded-xl">
+                <div class="p-2 bg-blue-100 rounded-lg text-blue-600">
+                    <i data-lucide="info" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-blue-900 uppercase tracking-wide mb-1">
+                        Status
+                    </h4>
+                    <p id="explanation-text" class="text-blue-800 font-medium">
+                        Ready to start visualization.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= Right Panel ================= -->
+        <aside class="lg:col-span-5 flex flex-col gap-6">
+
+            <!-- Code Block -->
+            <div class="bg-slate-900 rounded-xl shadow-lg border border-slate-800 overflow-hidden">
+            <div class="bg-slate-800 px-4 py-2 border-b border-slate-700">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-300">
+                    C++ Logic
+                </span>
+            </div>
+            <pre class="p-4 overflow-x-auto text-sm font-mono text-emerald-200">
+            <code>#include &lt;iostream&gt;
+            using namespace std;
+
+            void bubbleSort(int arr[], int n) {
+                for (int i = 0; i &lt; n - 1; i++) {
+                    bool swapped = false;
+
+                    for (int j = 0; j &lt; n - i - 1; j++) {
+                        if (arr[j] &gt; arr[j + 1]) {
+                            swap(arr[j], arr[j + 1]);
+                            swapped = true;
+                        }
+                    }
+
+                    if (!swapped)
+                        break;
+                }
+            }</code>
+            </pre>
+
+            </div>
+
+            <!-- Complexity Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <!-- Time Complexity -->
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+                        Time Complexity
+                    </h4>
+                    <ul class="text-sm space-y-1">
+                        <li class="flex justify-between">
+                            <span>Worst Case</span>
+                            <span class="font-mono font-bold text-red-600">O(n²)</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Average Case</span>
+                            <span class="font-mono font-bold text-amber-600">O(n²)</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Best Case</span>
+                            <span class="font-mono font-bold text-emerald-600">O(n)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Space Complexity -->
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-center">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+                        Space Complexity
+                    </h4>
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl font-mono font-bold text-blue-600">O(1)</span>
+                        <span class="text-xs text-slate-400">(Auxiliary)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YouTube Video -->
+            <iframe
+                class="w-full h-64 rounded-xl border border-slate-200"
+                src="https://www.youtube.com/embed/HGk_ypEuS24"
+                title="Bubble Sort Explanation"
+                allowfullscreen>
+            </iframe>
+
+        </aside>
+
+    </main>
+</div>
+
+<footer class="bg-gray-800 text-white py-8 mt-auto">
+    <div class="container mx-auto px-6 text-center">
+        <p>&copy; 2025 DSA Visualizer. All Rights Reserved.</p>
+        <p class="text-sm text-gray-400 mt-2">Built with ❤️ to make learning easier.</p>
+    </div>
+</footer>
+
+<!-- ===== Script ===== -->
+<script src="../algorithms/sorting/bubblesort.js"></script>
+<script>lucide.createIcons();</script>
+
+</body>
+</html>

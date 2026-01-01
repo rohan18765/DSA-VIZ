@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort Tree Visualizer</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800 flex flex-col visualizer-grid">
+
+<div class="max-w-[1400px] mx-auto w-full p-4 md:p-8 flex-grow">
+    
+    <header class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+        <a href="../index.html" class="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition font-medium">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home
+        </a>
+        <h1 class="text-3xl font-bold text-slate-900 flex items-center gap-3">
+            <i data-lucide="git-merge" class="w-8 h-8 text-blue-600"></i>
+            Merge Sort Visualizer
+        </h1>
+    </header>
+
+    <main class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <section class="lg:col-span-7 flex flex-col gap-6">
+            
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden relative h-[520px] flex flex-col">
+                
+                <div class="p-4 border-b border-slate-100 flex flex-wrap gap-4 items-center bg-slate-50/50 sticky top-0 z-10 shrink-0">
+                    <label class="text-sm font-semibold text-slate-600">Array:</label>
+                    <input type="text" id="array-input" value="8, 3, 5, 4, 7, 6, 1, 2" 
+                           class="flex-1 min-w-[200px] px-4 py-2 border border-slate-200 rounded-lg text-sm font-mono focus:ring-2 focus:ring-blue-500 outline-none"
+                           placeholder="e.g. 5, 1, 8, 3">
+                    <button id="update-btn" class="px-6 py-2 bg-blue-600 text-white rounded-lg text-sm font-bold hover:bg-blue-700 transition shadow-sm">
+                        Visualize
+                    </button>
+                </div>
+
+                <div id="visualization-container" class="flex-grow bg-white w-full overflow-auto p-4">
+                    </div>
+                
+                <div class="border-t border-slate-200 bg-white p-3 sticky bottom-0 z-20 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] shrink-0">
+                    <div class="max-w-3xl mx-auto">
+                        <div class="bg-blue-50 border-l-4 border-blue-400 p-2 mb-3 rounded-r-lg">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-bold text-blue-900 uppercase tracking-wider">Current Step</span>
+                                <span id="step-counter" class="text-[10px] font-mono font-bold text-blue-500 bg-white px-2 py-0.5 rounded border border-blue-100">0 / 0</span>
+                            </div>
+                            <p id="step-description" class="text-slate-800 font-medium text-sm leading-snug mt-1">Loading...</p>
+                        </div>
+
+                        <div class="flex items-center justify-center gap-3 select-none">
+                            <button id="btn-first" class="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 hover:bg-slate-100 text-slate-600 transition disabled:opacity-50 font-bold">⟪</button>
+                            <button id="btn-prev" class="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 hover:bg-slate-100 text-slate-600 transition disabled:opacity-50 font-bold">⟨</button>
+                            
+                            <div class="h-6 w-[1px] bg-slate-200 mx-2"></div>
+                            
+                            <button id="btn-next" class="w-10 h-8 flex items-center justify-center rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-200 transition disabled:opacity-50 font-bold">⟩</button>
+                            <button id="btn-last" class="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 hover:bg-slate-100 text-slate-600 transition disabled:opacity-50 font-bold">⟫</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                <h3 class="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <i data-lucide="youtube" class="text-red-600"></i>
+                    Video Tutorial
+                </h3>
+                <div class="aspect-video w-full rounded-xl overflow-hidden bg-slate-900 shadow-inner">
+                    <iframe width="760" height="425" src="https://www.youtube.com/embed/ogjf7ORKfd8?si=lTGI3nwQnH96DqoN"
+                        title="YouTube video player" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <aside class="lg:col-span-5 flex flex-col gap-6">
+            
+            <div class="bg-slate-900 rounded-xl shadow-lg border border-slate-800 overflow-hidden flex flex-col max-h-[500px]">
+                <div class="flex items-center justify-between px-4 py-3 border-b border-slate-800 bg-slate-900/50">
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
+                        <i data-lucide="code-2" class="w-4 h-4"></i> C++ Implementation
+                    </span>
+                    <div class="flex gap-1.5">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/20"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-green-500/20"></div>
+                    </div>
+                </div>
+                <div class="overflow-y-auto custom-scrollbar p-4">
+<pre class="text-xs sm:text-sm font-mono text-blue-100 leading-relaxed"><code>void merge(int arr[], int l, int m, int r) {
+    int n1 = m - l + 1;
+    int n2 = r - m;
+    int L[n1], R[n2];
+
+    for (int i = 0; i < n1; i++) L[i] = arr[l + i];
+    for (int j = 0; j < n2; j++) R[j] = arr[m + 1 + j];
+
+    int i = 0, j = 0, k = l;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) arr[k++] = L[i++];
+        else arr[k++] = R[j++];
+    }
+    while (i < n1) arr[k++] = L[i++];
+    while (j < n2) arr[k++] = R[j++];
+}
+
+void mergeSort(int arr[], int l, int r) {
+    if (l >= r) return;
+    int m = l + (r - l) / 2;
+    mergeSort(arr, l, m);
+    mergeSort(arr, m + 1, r);
+    merge(arr, l, m, r);
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <h4 class="text-xs font-bold uppercase text-slate-500 mb-2">Time Complexity</h4>
+                    <p class="font-mono font-bold text-emerald-600 text-xl">O(n log n)</p>
+                    <p class="text-xs text-slate-400 mt-2">Guaranteed for all cases</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <h4 class="text-xs font-bold uppercase text-slate-500 mb-2">Space Complexity</h4>
+                    <p class="font-mono font-bold text-blue-600 text-xl">O(n)</p>
+                    <p class="text-xs text-slate-400 mt-2">Requires auxiliary arrays</p>
+                </div>
+            </div>
+
+            <div class="bg-indigo-50 border border-indigo-100 p-5 rounded-xl flex gap-3 items-start text-sm text-indigo-800 flex-grow">
+                <i data-lucide="lightbulb" class="w-5 h-5 shrink-0 mt-0.5 text-indigo-600"></i>
+                <p><strong>Pro Tip:</strong> Merge Sort is a "stable" sort. If you have two objects with equal keys, their original order is preserved. This is crucial in real-world databases.</p>
+            </div>
+
+        </aside>
+    </main>
+</div>
+
+<footer class="bg-gray-800 text-white py-8 mt-auto">
+    <div class="container mx-auto px-6 text-center">
+        <p>&copy; 2025 DSA Visualizer. All Rights Reserved.</p>
+        <p class="text-sm text-gray-400 mt-2">Built with ❤️ to make learning easier.</p>
+    </div>
+</footer>
+
+<script src="../algorithms/sorting/mergesort.js"></script>
+<script>
+    lucide.createIcons();
+</script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Visualizer - Learn Data Structures and Algorithms Interactively</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style.css">
+    <!-- In index.html -->
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+<header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-blue-600">DSA-VIZ</h1>
+        <nav>
+            <a href="#features" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium font-family">Features</a>
+            <a href="#visualizers" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">Visualizers</a>
+            <a href="#About" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">About</a>
+        </nav>
+    </div>
+</header>
+
+    <!-- Hero Section -->
+    <main>
+        <section class="hero-bg text-white py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Visualize Data Structures & Algorithms</h2>
+                <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto mb-8">
+                    Unlock the power of algorithms. Learn, understand, and master complex data structures through interactive, step-by-step visualizations.
+                </p>
+                <a href="#visualizers" class="inline-block bg-white text-blue-600 font-bold py-3 px-8 rounded-full text-lg  transition duration-300 transform hover:scale-105">
+                    Start Visualizing
+                </a>
+
+                
+            </div>
+        </section>
+
+       <div class="relative z-10 px-6 -mt-[80px] md:-mt-[100px] mb-20">
+
+
+
+
+            <div class="container mx-auto max-w-4xl">
+                <div class="bg-white rounded-xl shadow-2xl border border-gray-300 overflow-hidden transform transition-all hover:scale-[1.01] duration-500">
+                    
+                    <div class="bg-gray-100 border-b border-gray-200 px-4 py-3 flex items-center gap-2">
+                        <div class="flex gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-md px-3 py-1 text-xs text-gray-500 font-mono ml-4 flex-1 max-w-sm">
+                            dsa-viz preview
+                        </div>
+                    </div>
+
+                    <div class="aspect-video bg-gray-50 relative group">
+                        <img src="./assets/demo2.gif"
+                                alt="DSA Visualizer demo preview animation"
+                                class="w-full h-full object-cover opacity-90">
+
+                        
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+
+                        <a href="#visualizers"
+                        class="bg-white/90 backdrop-blur text-blue-600 px-6 py-2 rounded-full font-bold shadow-lg
+                                flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0
+                                transition-all hover:bg-white hover:shadow-xl">
+                        
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/>
+                        </svg>
+
+                        See it in action
+                        </a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+<section id="features" class="py-24 bg-slate-50 relative overflow-hidden">
+            
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-blue-100 rounded-full blur-3xl opacity-40"></div>
+                <div class="absolute top-[20%] right-[5%] w-[20%] h-[20%] bg-indigo-100 rounded-full blur-3xl opacity-40"></div>
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                
+                <div class="text-center mb-16 max-w-2xl mx-auto">
+                    <h2 class="text-base font-bold text-blue-600 uppercase tracking-widest mb-2">Features</h2>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">
+                        Why Use Our Visualizer?
+                    </h3>
+                    <p class="text-slate-600 mt-4 text-lg">
+                        We bridge the gap between abstract theory and real-world understanding with tools designed for learners.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 text-left">
+                    
+                    <div class="group bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-blue-200 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-3">Interactive Learning</h4>
+                        <p class="text-slate-600 leading-relaxed">
+                            Don't just watch passively. Control the speed, pause execution, and input your own data to see how the algorithm reacts in real-time.
+                        </p>
+                    </div>
+
+                    <div class="group bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-3">Code & Visual Sync</h4>
+                        <p class="text-slate-600 leading-relaxed">
+                            Connect the dots between logic and code. See the exact line of code highlight instantly as the visual animation plays out.
+                        </p>
+                    </div>
+
+                    <div class="group bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500 to-teal-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-teal-200 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-3">Broad Coverage</h4>
+                        <p class="text-slate-600 leading-relaxed">
+                            From basic Arrays and Linked Lists to complex Graph traversals and Tree recursion, we have the entire curriculum covered.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Visualizers Section -->
+        <section id="visualizers" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-gray-900">Explore Visualizers</h3>
+                    <p class="text-gray-600 mt-2">Choose a data structure or algorithm to begin.</p>
+                </div>
+
+                <!-- Sorting Algorithms -->
+                <div class="mb-16">
+                    <h4 class="text-2xl font-semibold mb-6 text-gray-800">Sorting Algorithms</h4>
+
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    
+                    <a href="./pages/bubblesort.html" class="block">
+                        <div class="bg-gradient-to-br from-white to-blue-50 border 
+                            border-blue-100 rounded-2xl shadow-sm p-6 text-center
+                            transition duration-300 transform hover:-translate-y-2 
+                            hover:shadow-xl hover:shadow-blue-100/50 hover:scale-105 cursor-pointer">
+
+                            <h5 class="text-xl font-bold mb-2 text-blue-900">Bubble Sort</h5>
+                            <p class="text-gray-600 mb-4 text-sm">Repeatedly steps through the list compared adjacent elements.</p>
+                            <span class="font-semibold text-blue-600">Visualize →</span>
+                        </div>
+                    </a>
+
+                    <a href="./pages/quicksort.html" class="block">
+                        <div class="bg-gradient-to-br from-white to-rose-50 border border-rose-100 
+                                rounded-2xl shadow-sm p-6 text-center transition duration-300 transform 
+                                hover:-translate-y-2 hover:shadow-xl hover:shadow-rose-100/50
+                                hover:scale-105 cursor-pointer">
+                            <h5 class="text-xl font-bold mb-2 text-rose-900">Quick Sort</h5>
+                            <p class="text-gray-600 mb-4 text-sm">A highly efficient sorting algorithm that uses partitioning.</p>
+                            <span class="font-semibold text-rose-600">Visualize →</span>
+                        </div>
+                    </a>
+
+                    <a href="./pages/mergesort.html" class="block">
+                        <div class="bg-gradient-to-br from-white to-indigo-50
+                            border border-indigo-100 rounded-2xl shadow-sm p-6
+                            text-center transition duration-300 transform 
+                            hover:-translate-y-2 hover:shadow-xl hover:shadow-indigo-100/50 hover:scale-105
+                            cursor-pointer">
+
+                            <h5 class="text-xl font-bold mb-2 text-indigo-900">Merge Sort</h5>
+                            <p class="text-gray-600 mb-4 text-sm">Efficient, comparison-based, divide and conquer algorithm.</p>
+                            <span class="font-semibold text-indigo-600">Visualize →</span>
+                        </div>
+                    </a>
+
+                    <a href="./pages/insertionsort.html" class="block">
+                        <div class="bg-gradient-to-br from-white to-amber-50 border
+                          border-amber-100 rounded-2xl shadow-sm p-6 text-center transition
+                          duration-300 transform hover:-translate-y-2 hover:shadow-xl 
+                          hover:shadow-amber-100/50  
+                          hover:scale-105 cursor-pointer">
+                            <h5 class="text-xl font-bold mb-2 text-amber-900">Insertion Sort</h5>
+                            <p class="text-gray-600 mb-4 text-sm">Builds the final sorted array by inserting one element at a time.</p>
+                            <span class="font-semibold text-amber-600">Visualize →</span>
+                        </div>
+                    </a>
+                    
+                    <a href="./pages/selectionsort.html" class="block">
+                        <div class="bg-gradient-to-br from-white to-emerald-50 border 
+                            border-emerald-100 rounded-2xl shadow-sm p-6 text-center 
+                            transition duration-300 transform hover:-translate-y-2 
+                            hover:shadow-xl hover:shadow-emerald-100/50  
+                            hover:scale-105 cursor-pointer">
+
+                            <h5 class="text-xl font-bold mb-2 text-emerald-900">Selection Sort</h5>
+                            <p class="text-gray-600 mb-4 text-sm">Repeatedly selects the smallest element from the unsorted portion.</p>
+                            <span class="font-semibold text-emerald-600">Visualize →</span>
+                        </div>
+                    </a>
+
+                </div>
+                </div>
+
+                <!-- Data Structures -->
+                <div class="mb-16">
+                    <h4 class="text-2xl font-semibold mb-6 text-gray-800">Data Structures</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+                        <a href="./pages/linklist.html" class="block">
+                            <div class="bg-gradient-to-br from-white to-cyan-50 border border-cyan-100 rounded-2xl shadow-sm p-6 text-center 
+                                        transition duration-300 transform 
+                                        hover:-translate-y-2 hover:shadow-xl hover:shadow-cyan-100/50 
+                                        cursor-pointer h-full flex flex-col hover:scale-105 justify-between">
+                                <div>
+                                    <h5 class="text-xl font-bold mb-2 text-cyan-900">Linked List</h5>
+                                    <p class="text-gray-600 mb-4 text-sm">
+                                        A linear collection of data elements whose order is not given by their physical placement.
+                                    </p>
+                                </div>
+                                <span class="font-semibold text-cyan-600 hover:text-cyan-800">Visualize →</span>
+                            </div>
+                        </a>
+
+                        <a href="./pages/bst.html" class="block">
+                            <div class="bg-gradient-to-br from-white to-lime-50 border border-lime-100 rounded-2xl shadow-sm p-6 text-center 
+                                        transition duration-300 transform 
+                                        hover:-translate-y-2 hover:shadow-xl hover:shadow-lime-100/50 
+                                        cursor-pointer h-full flex flex-col hover:scale-105 justify-between">
+                                <div>
+                                    <h5 class="text-xl font-bold mb-2 text-lime-900">Binary Search Tree</h5>
+                                    <p class="text-gray-600 mb-4 text-sm">
+                                        A rooted binary tree where each node's key is greater than its left child and less than its right.
+                                    </p>
+                                </div>
+                                <span class="font-semibold text-lime-600 hover:text-lime-800">Visualize →</span>
+                            </div>
+                        </a>
+
+                        <a href="./pages/stack.html" class="block">
+                            <div class="bg-gradient-to-br from-white to-violet-50 border border-violet-100 rounded-2xl shadow-sm p-6 text-center 
+                                        transition duration-300 transform 
+                                        hover:-translate-y-2 hover:shadow-xl hover:shadow-violet-100/50 
+                                        cursor-pointer h-full flex flex-col hover:scale-105 justify-between">
+                                <div>
+                                    <h5 class="text-xl font-bold mb-2 text-violet-900">Stack</h5>
+                                    <p class="text-gray-600 mb-4 text-sm">
+                                        A LIFO (Last-In, First-Out) data structure. Like a stack of plates.
+                                    </p>
+                                </div>
+                                <span class="font-semibold text-violet-600 hover:text-violet-800">Visualize →</span>
+                            </div>
+                        </a>
+
+                        <a href="./pages/queue.html" class="block">
+                            <div class="bg-gradient-to-br from-white to-orange-50 border border-orange-100 rounded-2xl shadow-sm p-6 text-center 
+                                        transition duration-300 transform 
+                                        hover:-translate-y-2 hover:shadow-xl hover:shadow-orange-100/50 
+                                        cursor-pointer h-full flex flex-col hover:scale-105 justify-between">
+                                <div>
+                                    <h5 class="text-xl font-bold mb-2 text-orange-900">Queue</h5>
+                                    <p class="text-gray-600 mb-4 text-sm">
+                                        A FIFO (First-In, First-Out) data structure. Similar to a queue at a counter.
+                                    </p>
+                                </div>
+                                <span class="font-semibold text-orange-600 hover:text-orange-800">Visualize →</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+
+                 <!-- Graph Algorithms -->
+                <div class="mb-16">
+                    <h4 class="text-2xl font-semibold mb-6 text-gray-800">Graph Algorithms</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+                        
+                        <a href="./pages/graphstructure.html" class="block">
+                            <div class="bg-gradient-to-br from-white to-slate-100 border border-slate-200 rounded-2xl shadow-sm p-6 text-center 
+                                    transition duration-300 transform 
+                                    hover:-translate-y-2 hover:shadow-xl hover:shadow-slate-200/50 
+                                    cursor-pointer h-full flex flex-col hover:scale-105 justify-between">
+                                <div>
+                                    <h5 class="text-xl font-bold mb-2 text-slate-800">Graph Structure</h5>
+                                    <p class="text-gray-600 mb-4 text-base text-green-800 font-bold">
+                                         Adjacency Matrices vs. Adjacency Lists .
+                                    </p>
+                                </div>
+                                <span class="font-semibold text-slate-600 hover:text-slate-800">Visualize →</span>
+                            </div>
+                        </a>
+
+
+                        <a href="./pages/bfs.html" class="block">
+                            <div class="bg-gradient-to-br from-white to-pink-50 border border-pink-100 rounded-2xl shadow-sm p-6 text-center 
+                                        transition duration-300 transform 
+                                        hover:-translate-y-2 hover:shadow-xl hover:shadow-pink-100/50 
+                                        cursor-pointer h-full flex flex-col hover:scale-105  justify-between">
+                                <div>
+                                    <h5 class="text-xl font-bold mb-2 text-pink-900">Breadth-First Search</h5>
+                                    <p class="text-gray-600 mb-4 text-sm">
+                                        Explores all neighbor nodes at the present depth before moving deeper.
+                                    </p>
+                                </div>
+                                <span class="font-semibold text-pink-600 hover:text-pink-800">Visualize →</span>
+                            </div>
+                        </a>
+
+                        <a href="./pages/dfs.html" class="block">
+                            <div class="bg-gradient-to-br from-white to-lime-50 border border-fuchsia-100 rounded-2xl shadow-sm p-6 text-center 
+                                        transition duration-300 transform 
+                                        hover:-translate-y-2 hover:shadow-xl hover:shadow-fuchsia-100/50 
+                                        cursor-pointer h-full flex flex-col hover:scale-105  justify-between">
+                                <div>
+                                    <h5 class="text-xl font-bold mb-2 text-lime-900">Depth-First Search</h5>
+                                    <p class="text-gray-600 mb-4 text-sm">
+                                        Explores as far as possible along each branch before backtracking.
+                                    </p>
+                                </div>
+                                <span class="font-semibold text-orange-800 hover:text-orange-900">Visualize →</span>
+                            </div>
+                        </a>
+
+                        <a href="./pages/dijkstra.html" class="block">
+                            <div class="bg-gradient-to-br from-white to-teal-50 border border-teal-100 rounded-2xl shadow-sm p-6 text-center 
+                                        transition duration-300 transform 
+                                        hover:-translate-y-2 hover:shadow-xl hover:shadow-teal-100/50 
+                                        cursor-pointer h-full flex flex-col hover:scale-105  justify-between">
+                                <div>
+                                    <h5 class="text-xl font-bold mb-2 text-teal-900">Dijkstra's Algorithm</h5>
+                                    <p class="text-gray-600 mb-4 text-sm">
+                                        Finds the shortest paths between nodes in a graph. Great for maps!
+                                    </p>
+                                </div>
+                                <span class="font-semibold  text-base  hover:text-teal-800">Coming soon…</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-2xl font-semibold mb-6 text-gray-800">DSA Essentials</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+                        <a href="./pages/heap.html" class="block">
+                            <div class="bg-gradient-to-br from-white to-amber-50 border border-amber-100 rounded-2xl shadow-sm p-6 text-center 
+                                    transition duration-300 transform 
+                                    hover:-translate-y-2 hover:shadow-xl hover:shadow-amber-100/50 
+                                    cursor-pointer h-full flex flex-col hover:scale-105 justify-between">
+                                <div>
+                                    <h5 class="text-xl font-bold mb-2 text-amber-900">Min/Max Heap</h5>
+                                    <p class="text-gray-600 mb-4 text-sm">
+                                        A specialized tree-based structure that satisfies the heap property. Great for priority queues.
+                                    </p>
+                                </div>
+                                <span class="font-semibold text-amber-600 hover:text-amber-800">Visualize →</span>
+                            </div>
+                        </a>
+
+                        <a href="./pages/trie.html" class="block">
+                            <div class="bg-gradient-to-br from-white to-indigo-50 border border-indigo-100 rounded-2xl shadow-sm p-6 text-center 
+                                    transition duration-300 transform 
+                                    hover:-translate-y-2 hover:shadow-xl hover:shadow-indigo-100/50 
+                                    cursor-pointer h-full flex flex-col hover:scale-105 justify-between">
+                                <div>
+                                    <h5 class="text-xl font-bold mb-2 text-indigo-900">Trie (Prefix Tree)</h5>
+                                    <p class="text-gray-600 mb-4 text-sm">
+                                        Efficient information retrieval data structure used for storing strings and autocomplete.
+                                    </p>
+                                </div>
+                                <span class="font-semibold text-indigo-600 hover:text-indigo-800">Visualize →</span>
+                            </div>
+                        </a>
+
+                         <a href="./pages/hashmap.html" class="block">
+                            <div class="bg-gradient-to-br from-white to-pink-50 border border-pink-100 rounded-2xl shadow-sm p-6 text-center 
+                                    transition duration-300 transform 
+                                    hover:-translate-y-2 hover:shadow-xl hover:shadow-pink-100/50 
+                                    cursor-pointer h-full flex flex-col hover:scale-105 justify-between">
+                                <div>
+                                    <h5 class="text-xl font-bold mb-2 text-pink-900">Hash Map</h5>
+                                    <p class="text-gray-600 mb-4 text-sm">
+                                        Stores key-value pairs for highly efficient lookups using a hashing function.
+                                    </p>
+                                </div>
+                                <span class="font-semibold text-pink-600 hover:text-pink-800">Visualize →</span>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- About Section -->
+<!-- About Section (Dark Theme) -->
+<section id="About" class="py-24 bg-gradient-to-b from-gray-900 via-gray-950 to-black">
+  <div class="container mx-auto px-6">
+
+    <!-- Heading -->
+    <div class="text-center mb-14">
+      <h3 class="text-3xl md:text-4xl font-extrabold text-white">
+        About This Project
+      </h3>
+
+      <p class="text-gray-400 mt-4 max-w-3xl mx-auto">
+        DSA-VIZ helps learners understand Data Structures and Algorithms using
+        animations, intuition, and interactive step-by-step exploration.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid md:grid-cols-2 gap-10">
+
+      <!-- Why I Built This -->
+      <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur
+                  shadow-[0_0_25px_rgba(0,0,0,0.4)] p-6">
+        <h4 class="text-xl font-semibold mb-3 text-white">
+          Why I Built This
+        </h4>
+
+        <p class="text-gray-300 leading-relaxed">
+          Many students memorize algorithms without really understanding what
+          happens behind the scenes.  
+          DSA-VIZ was created to make learning visual, interactive, and practical —
+          so anyone can explore, pause, experiment, and truly “see” how algorithms work.
+        </p>
+      </div>
+
+      <!-- What You'll Learn -->
+      <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur
+                  shadow-[0_0_25px_rgba(0,0,0,0.4)] p-6">
+        <h4 class="text-xl font-semibold mb-3 text-white">
+          What You’ll Learn
+        </h4>
+
+        <ul class="text-gray-300 space-y-2 list-disc pl-6">
+          <li>Clear intuition behind algorithms</li>
+          <li>How data transforms at every step</li>
+          <li>Connections between code and visualization</li>
+          <li>Confidence solving real problem-solving questions</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 DSA Visualizer. All Rights Reserved.</p>
+            <p class="text-sm text-gray-400 mt-2">Built with ❤️ to make learning easier.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
